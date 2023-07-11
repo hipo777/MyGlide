@@ -1,11 +1,11 @@
 package org.demre.myglide;
 
-public class ItemImagens {
-    private String imageUrl;
-    private String description;
-    private String planetas;
+public class ItemImage {
+    private final String imageUrl;
+    private final String description;
+    private final String planetas;
 
-    public ItemImagens(String imageUrl, String description, String nombre) {
+    public ItemImage(String imageUrl, String description, String nombre) {
         this.imageUrl = imageUrl;
         this.description = description;
         this.planetas = nombre;

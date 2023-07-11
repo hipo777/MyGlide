@@ -9,17 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import org.demre.myglide.databinding.ItemListBinding;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
-    List<ItemImagens> imageItems;
+    List<ItemImage> imageItems;
     private OnItemClickListener onItemClickListener;
 
-    public MyAdapter(Context context, List<ItemImagens> imageItems) {
+    public MyAdapter(Context context, List<ItemImage> imageItems) {
         this.context = context;
         this.imageItems = imageItems;
     }
@@ -33,7 +31,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        ItemImagens item = imageItems.get(position);
+        ItemImage item = imageItems.get(position);
 
         Glide.with(context)
                 .load(item.getImageUrl())
@@ -41,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
 
-        holder.txtDesc.setText(item.getPlanetas());
+        holder.tvDescription.setText(item.getPlanetas());
 
         holder.itemView.setOnClickListener(v -> {
             onItemClickListener.onItemClick(imageItems.get(position));
@@ -55,24 +53,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ItemImagens item);
+        void onItemClick(ItemImage item);
     }
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView txtDesc;
-
-        ItemListBinding binding;
+        TextView tvDescription;
 
         public MyViewHolder(@NonNull ItemListBinding binding) {
             super(binding.getRoot());
 
             imageView = binding.ivPreguntas;
-            txtDesc = binding.txtViewItem;
+            tvDescription = binding.txtViewItem;
 
         }
     }
