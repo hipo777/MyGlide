@@ -23,7 +23,7 @@ public class FirstFragment extends Fragment {
 
     private void initListerner() {
         binding.btnAgregar.setOnClickListener(v -> {
-            datos.add("Palabra " + (datos.size()+1));
+            datos.add("Pregunta " + (datos.size()+1));
             binding.recyclerView.getAdapter().notifyItemInserted(datos.size());
             binding.recyclerView.smoothScrollToPosition(datos.size());
         });
@@ -33,19 +33,12 @@ public class FirstFragment extends Fragment {
     private void initRecycler() {
         MyAdapter adaptador = new MyAdapter(listaAutogenerada());
         binding.recyclerView.setAdapter(adaptador);
-        /*
-        //Data
-        List<String> data = listaAutogenerada();
-        // Adapter
-        MyAdapter adaptador = new MyAdapter();
-        adaptador.setPalabras(data);
-        // enlaza el adapter con el recyclerview
-        binding.recyclerView.setAdapter(adaptador);*/
+
     }
 
     private List<String> listaAutogenerada() {
         for (int i = 1; i <=5; i++) {
-            datos.add("Palabra " + i);
+            datos.add("Pregunta " + i);
         }
         return datos;
     }
